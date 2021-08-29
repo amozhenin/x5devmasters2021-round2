@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +7,8 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-//        Scanner scan = new Scanner(System.in);
-        Scanner scan = new Scanner(new File("input.txt"));
+        Scanner scan = new Scanner(System.in);
+//        Scanner scan = new Scanner(new File("input.txt"));
         Stack<Integer> stack = new Stack<>();
         Map<Integer, String> stackElements = new HashMap<>();
         Map<Integer, List<String>> attributeNames = new HashMap<>();
