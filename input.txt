@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <group id="1" name="A">
+    <item name="a1" id="2" value="a 1"/>
+    <itemname=a2id=3value=a2/>
+    <itemname=a3id=4value=a3/>
+  </group>
+  <groupid=5name=B>
+    <group id="6" name="B1">
+        <file id="7" value="b11"/>
+        <fileid=8value=b12/>
+    </group>
+  </group>
+</root>
