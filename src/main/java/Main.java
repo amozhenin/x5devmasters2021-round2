@@ -1,5 +1,11 @@
+import java.io.File;
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+//        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(new File("input.txt"));
+
         System.out.println("25 0 25 0");
         System.out.println("125 0 125 0");
         System.out.println("125 100 25 0");
