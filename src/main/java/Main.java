@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-//        Scanner scan = new Scanner(System.in);
-        Scanner scan = new Scanner(new File("input.txt"));
+        Scanner scan = new Scanner(System.in);
+//        Scanner scan = new Scanner(new File("input.txt"));
 
         int productsCount = scan.nextInt();
         int moneyCount = scan.nextInt();
