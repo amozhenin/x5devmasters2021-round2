@@ -34,20 +34,8 @@ public class Main {
 
         Operation[] operations = new Operation[opsCount];
         for (int i = 0; i < opsCount; i++) {
-            int id = scan.nextInt();
-            Integer argument = null;
-            OpClass opClass = OpClass.findById(id);
-            if (opClass == OpClass.BUY) {
-                argument = scan.nextInt();
-            } else if (opClass == OpClass.MONEY) {
-                String stringArg = scan.next();
-                try {
-                    argument = Integer.parseInt(stringArg);
-                } catch (NumberFormatException e) {
-                    argument = 0;
-                }
-            }
-            Operation op = new Operation(opClass, argument);
+            String opLine = scan.nextLine();
+            Operation op = parseOperation(opLine);
             operations[i] = op;
         }
 
@@ -57,6 +45,27 @@ public class Main {
             status = updateStatus(status, operations[i]);
             System.out.println(status);
         }
+    }
+
+    private static Operation parseOperation(String line) {
+        String[] args = line.split(" ");
+        int id;
+        try {
+            id = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            return new Operation(OpClass.UNKNOWN, null);
+        }
+        Integer argument = null;
+        OpClass opClass = OpClass.findById(id);
+        if (opClass == OpClass.BUY || opClass == OpClass.MONEY) {
+            try {
+                argument = Integer.parseInt(args[1]);
+            } catch (NumberFormatException e) {
+                argument = 0;
+            }
+        }
+        Operation op = new Operation(opClass, argument);
+        return op;
     }
 
     private static Basket initBasket(Product[] products, Map<Integer, Money> moneyMap) {
@@ -271,7 +280,8 @@ public class Main {
         BUY(1),
         MONEY(2),
         CHECKOUT(3),
-        CANCEL(4);
+        CANCEL(4),
+        UNKNOWN(-1);
 
         OpClass(int id) {
             this.id = id;
