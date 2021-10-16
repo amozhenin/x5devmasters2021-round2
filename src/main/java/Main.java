@@ -32,6 +32,7 @@ public class Main {
             money.put(nominal, coinBlock);
         }
 
+        scan.nextLine();
         Operation[] operations = new Operation[opsCount];
         for (int i = 0; i < opsCount; i++) {
             String opLine = scan.nextLine();
