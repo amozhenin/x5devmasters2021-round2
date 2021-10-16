@@ -37,48 +37,19 @@ public class Main {
             int id = scan.nextInt();
             Integer argument = null;
             OpClass opClass = OpClass.findById(id);
-            if (opClass == OpClass.BUY || opClass == OpClass.MONEY) {
+            if (opClass == OpClass.BUY) {
                 argument = scan.nextInt();
+            } else if (opClass == OpClass.MONEY) {
+                String stringArg = scan.next();
+                try {
+                    argument = Integer.parseInt(stringArg);
+                } catch (NumberFormatException e) {
+                    argument = 0;
+                }
             }
             Operation op = new Operation(opClass, argument);
             operations[i] = op;
         }
-
-        //debug input
-//        System.out.println("productsCount = " + productsCount + ", moneyCount = " + moneyCount + ", opsCount = " + opsCount);
-//        for (int i = 1; i <= productsCount; i++) {
-//            System.out.println("id = " + products[i].getId() + ", price = " + products[i].getPrice() + ", quantity = " + products[i].getQuantity());
-//        }
-//        for (Map.Entry<Integer, Money> entry : money.entrySet()) {
-//            System.out.println("nominal = " + entry.getValue().getNominal() + ", count = " + entry.getValue().getCount());
-//        }
-//        for (int i = 0; i < opsCount; i++) {
-//            System.out.print("op = ");
-//            OpClass opClass = operations[i].getOpClass();
-//            switch (opClass) {
-//                case BUY:
-//                case MONEY:
-//                    System.out.print(opClass.name() + ", argument = " + operations[i].getArgument());
-//                    break;
-//                case CHECKOUT:
-//                case CANCEL:
-//                    System.out.print(opClass.name());
-//                    break;
-//                default:
-//                    System.out.print("UNKNOWN");
-//            }
-//            System.out.println();
-//        }
-
-        scan.close();
-//        System.out.println("25 0 25 0");
-//        System.out.println("125 0 125 0");
-//        System.out.println("125 100 25 0");
-//        System.out.println("125 100 25 0");
-//        System.out.println("125 110 15 0");
-//        System.out.println("125 120 5 0");
-//        System.out.println("125 130 0 5");
-//        System.out.println("0 0 0 0");
 
         Basket basket = initBasket(products, money);
         Status status = new Status(0, 0, 0, 0, basket, products, money);
